@@ -1,0 +1,23 @@
+AQueue.js 0.1
+README.txt
+
+・はじめに
+AQueue.jsは非同期処理を行なう関数を
+シーケンシャルに実行させるためのスクリプトである。
+
+・使い方
+index.htmlおよびindex2.html参照。
+registで関数を登録。
+それぞれの関数の最後でendfunc処理を実行させ
+非同期処理のコールバックでresume処理を行なう。
+
+retain,及びreleaseは参照カウンタのようなもので
+複数の非同期処理を並列して実行しその全ての処理が
+終了した時点で次の処理を行なうようにするものである。
+詳しい使い方はindex2.html参照。
+
+・ライセンス
+MIT License
+
+http://masawada.info/
+Copyeight (C) 2011 masawada.info All rights reserved.

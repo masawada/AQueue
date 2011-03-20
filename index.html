@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>aqueue.js</title>
+<script type="text/javascript" src="./aqueue.js"></script>
+<script type="text/javascript"><!--
+window.onload = function (){
+var aq = new AQueue(function(){alert('ok');},function(message){alert(message);});
+document.getElementById('move').onclick = function(){
+box1 = document.getElementById('box1');
+box2 = document.getElementById('box2');
+aq.regist([
+function(){
+box1.addEventListener('webkitAnimationEnd', function(){aq.resume();box1.removeEventListener('webkitAnimationEnd', arguments.callee, false);}, false);
+box1.className = 'toB1';
+aq.endfunc();
+}
+,
+function(){
+box1.style.top = '120px';
+}
+,
+function(){
+box2.addEventListener('webkitAnimationEnd', function(){aq.resume();box1.removeEventListener('webkitAnimationEnd', arguments.callee, false);}, false);
+box2.className = 'toB2';
+aq.endfunc();
+}
+,
+function(){
+box2.style.top = '240px';
+}
+]);
+aq.exec();
+}
+}
+// --></script>
+<style>
+*{
+margin:0;
+padding:0;
+}
+
+#box1{
+position:absolute;
+top:60px;
+left:120px;
+width:120px;
+height:120px;
+background-color:#999;
+}
+
+#box1{
+position:absolute;
+top:60px;
+left:120px;
+width:120px;
+height:120px;
+background-color:#999;
+}
+
+#box2{
+position:absolute;
+top:60px;
+left:360px;
+width:120px;
+height:120px;
+background-color:#333;
+}
+
+.toB1{
+-webkit-animation-delay:0;
+-webkit-animation-duration:2000ms;
+-webkit-animation-name:move-to-bottom-1;
+}
+
+@-webkit-keyframes 'move-to-bottom-1'{
+	from{
+		top:60px;
+	}
+	to{
+		top:120px;
+	}
+}
+
+.toB2{
+-webkit-animation-delay:0;
+-webkit-animation-duration:2000ms;
+-webkit-animation-name:move-to-bottom-2;
+}
+
+@-webkit-keyframes 'move-to-bottom-2'{
+	from{
+		top:60px;
+	}
+	to{
+		top:240px;
+	}
+}
+
+
+</style>
+</head>
+<body>
+<div id="box1">
+</div>
+<div id="box2">
+</div>
+<input type="button" value="Move" id="move" />
+</body>
+</html>
